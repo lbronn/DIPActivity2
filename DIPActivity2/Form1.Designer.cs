@@ -32,9 +32,11 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             openToolStripMenuItem = new ToolStripMenuItem();
             openBackgroundToolStripMenuItem = new ToolStripMenuItem();
-            openWebcamToolStripMenuItem = new ToolStripMenuItem();
             saveToolStripMenuItem = new ToolStripMenuItem();
             closeToolStripMenuItem = new ToolStripMenuItem();
+            webcamToolStripMenuItem = new ToolStripMenuItem();
+            openWebcamToolStripMenuItem1 = new ToolStripMenuItem();
+            closeWebcamToolStripMenuItem1 = new ToolStripMenuItem();
             imageProcessingToolStripMenuItem = new ToolStripMenuItem();
             basicCopyToolStripMenuItem = new ToolStripMenuItem();
             grayscaleToolStripMenuItem = new ToolStripMenuItem();
@@ -51,7 +53,6 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            closeWebcamToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -61,7 +62,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, imageProcessingToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, webcamToolStripMenuItem, imageProcessingToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1242, 28);
@@ -70,7 +71,7 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, openBackgroundToolStripMenuItem, openWebcamToolStripMenuItem, closeWebcamToolStripMenuItem, saveToolStripMenuItem, closeToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, openBackgroundToolStripMenuItem, saveToolStripMenuItem, closeToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(46, 24);
             fileToolStripMenuItem.Text = "File";
@@ -89,13 +90,6 @@
             openBackgroundToolStripMenuItem.Text = "Open Background";
             openBackgroundToolStripMenuItem.Click += openBackgroundToolStripMenuItem_Click;
             // 
-            // openWebcamToolStripMenuItem
-            // 
-            openWebcamToolStripMenuItem.Name = "openWebcamToolStripMenuItem";
-            openWebcamToolStripMenuItem.Size = new Size(224, 26);
-            openWebcamToolStripMenuItem.Text = "Open Webcam";
-            openWebcamToolStripMenuItem.Click += openWebcamToolStripMenuItem_Click;
-            // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
@@ -110,6 +104,27 @@
             closeToolStripMenuItem.Text = "Close";
             closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
             // 
+            // webcamToolStripMenuItem
+            // 
+            webcamToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openWebcamToolStripMenuItem1, closeWebcamToolStripMenuItem1 });
+            webcamToolStripMenuItem.Name = "webcamToolStripMenuItem";
+            webcamToolStripMenuItem.Size = new Size(85, 24);
+            webcamToolStripMenuItem.Text = "Webcam ";
+            // 
+            // openWebcamToolStripMenuItem1
+            // 
+            openWebcamToolStripMenuItem1.Name = "openWebcamToolStripMenuItem1";
+            openWebcamToolStripMenuItem1.Size = new Size(224, 26);
+            openWebcamToolStripMenuItem1.Text = "Open Webcam";
+            openWebcamToolStripMenuItem1.Click += openWebcamToolStripMenuItem1_Click;
+            // 
+            // closeWebcamToolStripMenuItem1
+            // 
+            closeWebcamToolStripMenuItem1.Name = "closeWebcamToolStripMenuItem1";
+            closeWebcamToolStripMenuItem1.Size = new Size(224, 26);
+            closeWebcamToolStripMenuItem1.Text = "Close Webcam";
+            closeWebcamToolStripMenuItem1.Click += closeWebcamToolStripMenuItem1_Click;
+            // 
             // imageProcessingToolStripMenuItem
             // 
             imageProcessingToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { basicCopyToolStripMenuItem, grayscaleToolStripMenuItem, colorInversionToolStripMenuItem, histogramToolStripMenuItem, sepiaToolStripMenuItem, subtractionToolStripMenuItem });
@@ -120,42 +135,42 @@
             // basicCopyToolStripMenuItem
             // 
             basicCopyToolStripMenuItem.Name = "basicCopyToolStripMenuItem";
-            basicCopyToolStripMenuItem.Size = new Size(224, 26);
+            basicCopyToolStripMenuItem.Size = new Size(191, 26);
             basicCopyToolStripMenuItem.Text = "Basic Copy";
             basicCopyToolStripMenuItem.Click += basicCopyToolStripMenuItem_Click;
             // 
             // grayscaleToolStripMenuItem
             // 
             grayscaleToolStripMenuItem.Name = "grayscaleToolStripMenuItem";
-            grayscaleToolStripMenuItem.Size = new Size(224, 26);
+            grayscaleToolStripMenuItem.Size = new Size(191, 26);
             grayscaleToolStripMenuItem.Text = "Grayscale";
             grayscaleToolStripMenuItem.Click += grayscaleToolStripMenuItem_Click;
             // 
             // colorInversionToolStripMenuItem
             // 
             colorInversionToolStripMenuItem.Name = "colorInversionToolStripMenuItem";
-            colorInversionToolStripMenuItem.Size = new Size(224, 26);
+            colorInversionToolStripMenuItem.Size = new Size(191, 26);
             colorInversionToolStripMenuItem.Text = "Color Inversion";
             colorInversionToolStripMenuItem.Click += colorInversionToolStripMenuItem_Click;
             // 
             // histogramToolStripMenuItem
             // 
             histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
-            histogramToolStripMenuItem.Size = new Size(224, 26);
+            histogramToolStripMenuItem.Size = new Size(191, 26);
             histogramToolStripMenuItem.Text = "Histogram";
             histogramToolStripMenuItem.Click += histogramToolStripMenuItem_Click;
             // 
             // sepiaToolStripMenuItem
             // 
             sepiaToolStripMenuItem.Name = "sepiaToolStripMenuItem";
-            sepiaToolStripMenuItem.Size = new Size(224, 26);
+            sepiaToolStripMenuItem.Size = new Size(191, 26);
             sepiaToolStripMenuItem.Text = "Sepia";
             sepiaToolStripMenuItem.Click += sepiaToolStripMenuItem_Click;
             // 
             // subtractionToolStripMenuItem
             // 
             subtractionToolStripMenuItem.Name = "subtractionToolStripMenuItem";
-            subtractionToolStripMenuItem.Size = new Size(224, 26);
+            subtractionToolStripMenuItem.Size = new Size(191, 26);
             subtractionToolStripMenuItem.Text = "Subtraction";
             subtractionToolStripMenuItem.Click += subtractionToolStripMenuItem_Click;
             // 
@@ -229,13 +244,6 @@
             label3.TabIndex = 6;
             label3.Text = "Final Output";
             // 
-            // closeWebcamToolStripMenuItem
-            // 
-            closeWebcamToolStripMenuItem.Name = "closeWebcamToolStripMenuItem";
-            closeWebcamToolStripMenuItem.Size = new Size(224, 26);
-            closeWebcamToolStripMenuItem.Text = "Close Webcam";
-            closeWebcamToolStripMenuItem.Click += closeWebcamToolStripMenuItem_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -285,7 +293,8 @@
         private ToolStripMenuItem colorInversionToolStripMenuItem;
         private ToolStripMenuItem histogramToolStripMenuItem;
         private ToolStripMenuItem sepiaToolStripMenuItem;
-        private ToolStripMenuItem openWebcamToolStripMenuItem;
-        private ToolStripMenuItem closeWebcamToolStripMenuItem;
+        private ToolStripMenuItem webcamToolStripMenuItem;
+        private ToolStripMenuItem openWebcamToolStripMenuItem1;
+        private ToolStripMenuItem closeWebcamToolStripMenuItem1;
     }
 }

@@ -5,6 +5,7 @@ namespace DIPActivity2
     public partial class Form1 : Form
     {
         Bitmap image, background, output;
+        Device firstDevice;
 
         public Form1()
         {
@@ -27,50 +28,6 @@ namespace DIPActivity2
             pictureBox2.Image = background;
         }
 
-        private void openWebcamToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Device[] allDevices = DeviceManager.GetAllDevices();
-
-                if(allDevices.Length > 0)
-                {
-                    Device firstDevice = allDevices[0];
-                    firstDevice.ShowWindow(pictureBox1);
-                }
-                else
-                {
-                    MessageBox.Show("No webcam devices found.");
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error in initializing the webcam, please try again.", "Webcam Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void closeWebcamToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Device[] allDevices = DeviceManager.GetAllDevices();
-
-                if (allDevices.Length > 0)
-                {
-                    Device firstDevice = allDevices[0];
-                    firstDevice.Stop();
-                }
-                else
-                {
-                    MessageBox.Show("No webcam devices found.");
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error in closing the webcam, please try again.", "Webcam Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox3.Image != null)
@@ -91,6 +48,50 @@ namespace DIPActivity2
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void openWebcamToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Device[] allDevices = DeviceManager.GetAllDevices();
+
+                if (allDevices.Length > 0)
+                {
+                    firstDevice = allDevices[0];
+                    firstDevice.ShowWindow(pictureBox1);
+                }
+                else
+                {
+                    MessageBox.Show("No webcam devices found.");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in initializing the webcam, please try again.", "Webcam Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void closeWebcamToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Device[] allDevices = DeviceManager.GetAllDevices();
+
+                if (allDevices.Length > 0)
+                {
+                    Device firstDevice = allDevices[0];
+                    firstDevice.Stop();
+                }
+                else
+                {
+                    MessageBox.Show("No webcam devices found.");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in closing the webcam, please try again.", "Webcam Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void basicCopyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -270,6 +271,6 @@ namespace DIPActivity2
             {
                 MessageBox.Show("There is no image in Picture Box 2, cannot use Subtraction as an image process.", "Image Processing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        } 
+        }
     }
 }
