@@ -1,0 +1,17 @@
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\bin\Debug\net7.0-windows\DIPActivity2.exe
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\bin\Debug\net7.0-windows\DIPActivity2.deps.json
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\bin\Debug\net7.0-windows\DIPActivity2.runtimeconfig.json
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\bin\Debug\net7.0-windows\DIPActivity2.dll
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\bin\Debug\net7.0-windows\DIPActivity2.pdb
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.Form1.resources
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.csproj.GenerateResource.cache
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.AssemblyInfoInputs.cache
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.AssemblyInfo.cs
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.csproj.CoreCompileInputs.cache
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.dll
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\refint\DIPActivity2.dll
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.pdb
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.genruntimeconfig.cache
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\ref\DIPActivity2.dll
+C:\Users\Le Bronn\source\repos\DIPActivity2\DIPActivity2\obj\Debug\net7.0-windows\DIPActivity2.sourcelink.json
