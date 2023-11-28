@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             openToolStripMenuItem = new ToolStripMenuItem();
@@ -36,6 +37,9 @@
             closeToolStripMenuItem = new ToolStripMenuItem();
             webcamToolStripMenuItem = new ToolStripMenuItem();
             openWebcamToolStripMenuItem1 = new ToolStripMenuItem();
+            realtimeWebcamCaptureToolStripMenuItem = new ToolStripMenuItem();
+            webcamSubtractionToolStripMenuItem = new ToolStripMenuItem();
+            saveToolStripMenuItem1 = new ToolStripMenuItem();
             closeWebcamToolStripMenuItem1 = new ToolStripMenuItem();
             imageProcessingToolStripMenuItem = new ToolStripMenuItem();
             basicCopyToolStripMenuItem = new ToolStripMenuItem();
@@ -53,10 +57,24 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            pictureBox4 = new PictureBox();
+            label4 = new Label();
+            saveFileDialog2 = new SaveFileDialog();
+            pictureBox5 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            label5 = new Label();
+            label6 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
+            saveFileDialog3 = new SaveFileDialog();
+            saveSubtractionToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -65,7 +83,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, webcamToolStripMenuItem, imageProcessingToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1242, 28);
+            menuStrip1.Size = new Size(1248, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -79,34 +97,34 @@
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(224, 26);
+            openToolStripMenuItem.Size = new Size(211, 26);
             openToolStripMenuItem.Text = "Open Image";
             openToolStripMenuItem.Click += openToolStripMenuItem_Click;
             // 
             // openBackgroundToolStripMenuItem
             // 
             openBackgroundToolStripMenuItem.Name = "openBackgroundToolStripMenuItem";
-            openBackgroundToolStripMenuItem.Size = new Size(224, 26);
+            openBackgroundToolStripMenuItem.Size = new Size(211, 26);
             openBackgroundToolStripMenuItem.Text = "Open Background";
             openBackgroundToolStripMenuItem.Click += openBackgroundToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.Size = new Size(224, 26);
+            saveToolStripMenuItem.Size = new Size(211, 26);
             saveToolStripMenuItem.Text = "Save";
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(224, 26);
-            closeToolStripMenuItem.Text = "Close";
+            closeToolStripMenuItem.Size = new Size(211, 26);
+            closeToolStripMenuItem.Text = "Close Image";
             closeToolStripMenuItem.Click += closeToolStripMenuItem_Click;
             // 
             // webcamToolStripMenuItem
             // 
-            webcamToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openWebcamToolStripMenuItem1, closeWebcamToolStripMenuItem1 });
+            webcamToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openWebcamToolStripMenuItem1, realtimeWebcamCaptureToolStripMenuItem, webcamSubtractionToolStripMenuItem, saveSubtractionToolStripMenuItem, saveToolStripMenuItem1, closeWebcamToolStripMenuItem1 });
             webcamToolStripMenuItem.Name = "webcamToolStripMenuItem";
             webcamToolStripMenuItem.Size = new Size(85, 24);
             webcamToolStripMenuItem.Text = "Webcam ";
@@ -114,14 +132,35 @@
             // openWebcamToolStripMenuItem1
             // 
             openWebcamToolStripMenuItem1.Name = "openWebcamToolStripMenuItem1";
-            openWebcamToolStripMenuItem1.Size = new Size(224, 26);
+            openWebcamToolStripMenuItem1.Size = new Size(230, 26);
             openWebcamToolStripMenuItem1.Text = "Open Webcam";
             openWebcamToolStripMenuItem1.Click += openWebcamToolStripMenuItem1_Click;
+            // 
+            // realtimeWebcamCaptureToolStripMenuItem
+            // 
+            realtimeWebcamCaptureToolStripMenuItem.Name = "realtimeWebcamCaptureToolStripMenuItem";
+            realtimeWebcamCaptureToolStripMenuItem.Size = new Size(230, 26);
+            realtimeWebcamCaptureToolStripMenuItem.Text = "Webcam Capture";
+            realtimeWebcamCaptureToolStripMenuItem.Click += realtimeWebcamCaptureToolStripMenuItem_Click;
+            // 
+            // webcamSubtractionToolStripMenuItem
+            // 
+            webcamSubtractionToolStripMenuItem.Name = "webcamSubtractionToolStripMenuItem";
+            webcamSubtractionToolStripMenuItem.Size = new Size(230, 26);
+            webcamSubtractionToolStripMenuItem.Text = "Webcam Subtraction";
+            webcamSubtractionToolStripMenuItem.Click += webcamSubtractionToolStripMenuItem_Click;
+            // 
+            // saveToolStripMenuItem1
+            // 
+            saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
+            saveToolStripMenuItem1.Size = new Size(230, 26);
+            saveToolStripMenuItem1.Text = "Save Capture";
+            saveToolStripMenuItem1.Click += saveToolStripMenuItem1_Click;
             // 
             // closeWebcamToolStripMenuItem1
             // 
             closeWebcamToolStripMenuItem1.Name = "closeWebcamToolStripMenuItem1";
-            closeWebcamToolStripMenuItem1.Size = new Size(224, 26);
+            closeWebcamToolStripMenuItem1.Size = new Size(230, 26);
             closeWebcamToolStripMenuItem1.Text = "Close Webcam";
             closeWebcamToolStripMenuItem1.Click += closeWebcamToolStripMenuItem1_Click;
             // 
@@ -219,7 +258,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(177, 66);
+            label1.Location = new Point(176, 66);
             label1.Name = "label1";
             label1.Size = new Size(51, 20);
             label1.TabIndex = 4;
@@ -238,17 +277,103 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(994, 66);
+            label3.Location = new Point(966, 66);
             label3.Name = "label3";
-            label3.Size = new Size(90, 20);
+            label3.Size = new Size(136, 20);
             label3.TabIndex = 6;
-            label3.Text = "Final Output";
+            label3.Text = "Final Image Output";
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox4.Location = new Point(25, 572);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(370, 388);
+            pictureBox4.TabIndex = 7;
+            pictureBox4.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = SystemColors.Menu;
+            label4.Location = new Point(175, 540);
+            label4.Name = "label4";
+            label4.Size = new Size(67, 20);
+            label4.TabIndex = 8;
+            label4.Text = "Webcam";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // saveFileDialog2
+            // 
+            saveFileDialog2.FileOk += saveFileDialog2_FileOk;
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.BackColor = SystemColors.Control;
+            pictureBox5.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox5.Location = new Point(430, 572);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(370, 388);
+            pictureBox5.TabIndex = 9;
+            pictureBox5.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox6.Location = new Point(845, 572);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(370, 388);
+            pictureBox6.TabIndex = 10;
+            pictureBox6.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(932, 540);
+            label5.Name = "label5";
+            label5.Size = new Size(195, 20);
+            label5.TabIndex = 11;
+            label5.Text = "Webcam Real-Time Capture";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(485, 540);
+            label6.Name = "label6";
+            label6.Size = new Size(257, 20);
+            label6.TabIndex = 12;
+            label6.Text = "Webcam Subtraction Implementation";
+            // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick_1;
+            // 
+            // timer2
+            // 
+            timer2.Tick += timer2_Tick;
+            // 
+            // saveFileDialog3
+            // 
+            saveFileDialog3.FileOk += saveFileDialog3_FileOk;
+            // 
+            // saveSubtractionToolStripMenuItem
+            // 
+            saveSubtractionToolStripMenuItem.Name = "saveSubtractionToolStripMenuItem";
+            saveSubtractionToolStripMenuItem.Size = new Size(230, 26);
+            saveSubtractionToolStripMenuItem.Text = "Save Subtraction";
+            saveSubtractionToolStripMenuItem.Click += saveSubtractionToolStripMenuItem_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1242, 510);
+            ClientSize = new Size(1248, 987);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(pictureBox6);
+            Controls.Add(pictureBox5);
+            Controls.Add(label4);
+            Controls.Add(pictureBox4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -265,6 +390,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -296,5 +424,19 @@
         private ToolStripMenuItem webcamToolStripMenuItem;
         private ToolStripMenuItem openWebcamToolStripMenuItem1;
         private ToolStripMenuItem closeWebcamToolStripMenuItem1;
+        private PictureBox pictureBox4;
+        private Label label4;
+        private ToolStripMenuItem realtimeWebcamCaptureToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem1;
+        private SaveFileDialog saveFileDialog2;
+        private PictureBox pictureBox5;
+        private PictureBox pictureBox6;
+        private Label label5;
+        private Label label6;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private ToolStripMenuItem webcamSubtractionToolStripMenuItem;
+        private SaveFileDialog saveFileDialog3;
+        private ToolStripMenuItem saveSubtractionToolStripMenuItem;
     }
 }

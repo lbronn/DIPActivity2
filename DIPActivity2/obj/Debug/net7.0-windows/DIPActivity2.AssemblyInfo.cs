@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DIPActivity2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+affaf0c7fdb1e99a6f42a8145465c9f891ac8217")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b38356c375e5e49c6685514fa0b624ca784b3c2d")]
 [assembly: System.Reflection.AssemblyProductAttribute("DIPActivity2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DIPActivity2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

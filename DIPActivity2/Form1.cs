@@ -1,11 +1,13 @@
+using System.ComponentModel;
 using WebCamLib;
 
 namespace DIPActivity2
 {
     public partial class Form1 : Form
     {
-        Bitmap image, background, output;
-        Device firstDevice;
+        Bitmap image, background, output, webcamCapture;
+        Device[] allWebcam;
+        Device webcam;
 
         public Form1()
         {
@@ -47,19 +49,26 @@ namespace DIPActivity2
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
+            if (pictureBox1.Image != null)
+            {
+                pictureBox1.Image.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Picture Box 1 is already empty.", "Closing Image Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void openWebcamToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             try
             {
-                Device[] allDevices = DeviceManager.GetAllDevices();
+                allWebcam = DeviceManager.GetAllDevices();
 
-                if (allDevices.Length > 0)
+                if (allWebcam.Length > 0)
                 {
-                    firstDevice = allDevices[0];
-                    firstDevice.ShowWindow(pictureBox1);
+                    webcam = allWebcam[0];
+                    webcam.ShowWindow(pictureBox4);
                 }
                 else
                 {
@@ -72,16 +81,108 @@ namespace DIPActivity2
             }
         }
 
+        private void realtimeWebcamCaptureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(webcam == null)
+            {
+                MessageBox.Show("No webcam selected.", "Webcam Capturing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //if(timer1.Enabled)
+            //{
+            //    timer1.Stop();
+            //}
+            //if(timer2.Enabled)
+            //{
+            //    timer2.Stop();
+            //}
+
+            //if(pictureBox6 != null && pictureBox6.Image != null)
+            //{
+            //    pictureBox6.Image.Dispose();
+            //    background = null;
+            //}
+
+            //if(pictureBox3 != null && pictureBox3.Image != null)
+            //{
+            //    pictureBox3.Image.Dispose();
+            //    pictureBox3.Image = null;
+            //}
+
+            try
+            {
+                background = CaptureAndDisplayImage();
+                pictureBox6.Image = background;
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Please open the webcam first, if available.", "");
+            }
+        }
+
+        private void webcamSubtractionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (background == null || image == null)
+            {
+                MessageBox.Show("There is no webcam or background image available.", "Webcam Subtraction Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (timer1.Enabled && pictureBox2 != null && pictureBox2.Image != null)
+            {
+                timer2.Start();
+            }
+            else
+            {
+                webcamSubtract(background);
+            }
+        }
+
+        private void saveFileDialog2_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            webcamCapture.Save(saveFileDialog2.FileName);
+        }
+
+        private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox6.Image != null)
+            {
+                saveFileDialog2.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("There is no captured webcam image, cannot save.", "Webcam Capture Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void saveFileDialog3_FileOk(object sender, CancelEventArgs e)
+        {
+            webcamCapture.Save(saveFileDialog3.FileName);
+        }
+
+        private void saveSubtractionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox5.Image != null)
+            {
+                saveFileDialog3.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("There is no subtracted webcam image, cannot save.", "Webcam Subtraction Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void closeWebcamToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             try
             {
-                Device[] allDevices = DeviceManager.GetAllDevices();
+                allWebcam = DeviceManager.GetAllDevices();
 
-                if (allDevices.Length > 0)
+                if (allWebcam.Length > 0)
                 {
-                    Device firstDevice = allDevices[0];
-                    firstDevice.Stop();
+                    webcam = allWebcam[0];
+                    webcam.Stop();
                 }
                 else
                 {
@@ -251,7 +352,16 @@ namespace DIPActivity2
                     for (int j = 0; j < image.Height; j++)
                     {
                         Color imageColor = image.GetPixel(i, j);
-                        Color backgroundColor = background.GetPixel(i, j);
+                        Color backgroundColor;
+                        if (i <= background.Width && j <= background.Height)
+                        {
+                            backgroundColor = background.GetPixel(i, j);
+                        }
+                        else
+                        {
+                            backgroundColor = Color.Black;
+                        }
+
                         int grey = (int)(imageColor.R + imageColor.G + imageColor.B) / 3;
                         int subtract = Math.Abs(grey - green);
 
@@ -272,5 +382,95 @@ namespace DIPActivity2
                 MessageBox.Show("There is no image in Picture Box 2, cannot use Subtraction as an image process.", "Image Processing Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //Additional functionalities
+        public void webcamSubtract(Bitmap frame)
+        {
+            output = new Bitmap(image.Width, image.Height);
+            Color bgGreen = Color.FromArgb(0, 0, 255);
+            int green = (int)(bgGreen.R + bgGreen.G + bgGreen.B) / 3;
+            int greenThreshold = 10;
+
+            for (int x = 0; x < image.Width; x++)
+            {
+                for (int y = 0; y < image.Height; y++)
+                {
+                    Color imageColor = image.GetPixel(x, y);
+                    Color backgroundColor = frame.GetPixel(x, y);
+                    int grey = (int)(imageColor.R + imageColor.G + imageColor.B) / 3;
+                    bool subtract = Math.Abs(grey - green) < greenThreshold;
+                    if (subtract)
+                        output.SetPixel(x, y, backgroundColor);
+                    else
+                        output.SetPixel(x, y, imageColor);
+                }
+            }
+            pictureBox5.Image = output;
+        }
+
+        private Bitmap CaptureAndDisplayImage()
+        {
+            if (webcam == null)
+            {
+                MessageBox.Show("There is no webcam selected.", "Webcam Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+            webcam.Sendmessage();
+            IDataObject data = Clipboard.GetDataObject();
+            if (data != null && data.GetData("System.Drawing.Bitmap", true) != null)
+            {
+                Image bmap = (Image)data.GetData("System.Drawing.Bitmap", true);
+                if (bmap != null)
+                {
+                    return new Bitmap(bmap);
+                }
+            }
+            return null;
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            if (webcam != null)
+            {
+                background = CaptureAndDisplayImage();
+                if (background != null)
+                {
+                    if (pictureBox2 != null && pictureBox2.Image != null)
+                    {
+                        pictureBox2.Image.Dispose();
+                    }
+                    pictureBox2.Image = background;
+                }
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            Bitmap newBmap = CaptureAndDisplayImage();
+            if (newBmap != null)
+            {
+                webcamSubtract(newBmap);
+            }
+        }
+
+        //private void WebcamProcessing(PictureBox pictureBox)
+        //{
+        //        webcam.Sendmessage();
+        //        IDataObject data = Clipboard.GetDataObject();
+        //        if(data != null && data.GetData("System.Drawing.Bitmap", true) != null )
+        //        {
+        //            Image bmap = (Image)data.GetData("System.Drawing.Bitmap", true);
+        //            if(bmap != null )
+        //            {
+        //                Bitmap b = new Bitmap(bmap);
+        //                if (pictureBox.Image  != null )
+        //                {
+        //                    pictureBox.Image.Dispose();
+        //                }
+        //            }
+        //        }
+
+        //}
     }
 }
