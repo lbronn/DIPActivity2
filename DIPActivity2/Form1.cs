@@ -89,27 +89,6 @@ namespace DIPActivity2
                 return;
             }
 
-            //if(timer1.Enabled)
-            //{
-            //    timer1.Stop();
-            //}
-            //if(timer2.Enabled)
-            //{
-            //    timer2.Stop();
-            //}
-
-            //if(pictureBox6 != null && pictureBox6.Image != null)
-            //{
-            //    pictureBox6.Image.Dispose();
-            //    background = null;
-            //}
-
-            //if(pictureBox3 != null && pictureBox3.Image != null)
-            //{
-            //    pictureBox3.Image.Dispose();
-            //    pictureBox3.Image = null;
-            //}
-
             try
             {
                 background = CaptureAndDisplayImage();
@@ -453,24 +432,5 @@ namespace DIPActivity2
                 webcamSubtract(newBmap);
             }
         }
-
-        //private void WebcamProcessing(PictureBox pictureBox)
-        //{
-        //        webcam.Sendmessage();
-        //        IDataObject data = Clipboard.GetDataObject();
-        //        if(data != null && data.GetData("System.Drawing.Bitmap", true) != null )
-        //        {
-        //            Image bmap = (Image)data.GetData("System.Drawing.Bitmap", true);
-        //            if(bmap != null )
-        //            {
-        //                Bitmap b = new Bitmap(bmap);
-        //                if (pictureBox.Image  != null )
-        //                {
-        //                    pictureBox.Image.Dispose();
-        //                }
-        //            }
-        //        }
-
-        //}
     }
 }
